@@ -1,4 +1,4 @@
-@import url("https://use.typekit.net/qgd3eha.css");
+//@import url("https://use.typekit.net/qgd3eha.css");
 
 //variables
 $font-primary: "sofia-pro", sans-serif;
@@ -7,6 +7,13 @@ $font-three: "sofia-pro-soft", sans-serif;
 
 $theme-color: #008BFF;
 $secondary-color: #00DEFF;
+
+// breakpoints
+$xs: 575.98px;
+$sm:  767.98px;
+$md: 991.98px;
+$lg: 1199.98px;
+
 //mixines
 @mixin flexCenter {
     display: flex;
@@ -32,6 +39,9 @@ a {
     }
 }
 .button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
     background: $secondary-color;
     box-shadow: 0px 1px 5px #00000029;
     border-radius: 100px;
@@ -44,6 +54,14 @@ a {
     padding: 30px 55px;
     transition: .25s linear;
     text-transform: uppercase;
+    &.button-theme {
+        background-color: $theme-color;
+        &:hover {
+            background-color: #fff;
+            color: $theme-color;
+            padding: 30px 55px;
+        }
+    }
     &:hover {
         color: #fff;
         text-decoration: none;
@@ -67,6 +85,9 @@ a {
 .ws70 {
     padding-top: 70px;
 }
+.ws100 {
+    padding-top: 100px;
+}
 .standard-section {
     padding: 100px 0;
     overflow: hidden;
@@ -88,6 +109,9 @@ a {
         max-width: 1020px;
         margin: 0 auto;
         padding: 15px 0;
+        @media (max-width: $sm){
+            font-size: 42px;
+        }
     }
 }
 .sub-page-title {
@@ -97,17 +121,67 @@ a {
     text-align: center;
     color: #008BFF;
     margin-bottom: 146px;
+    @media (max-width: $sm){
+        font-size: 42px;
+    }
 }
 .packets {
     position: relative;
     .row {
+        padding-top: 50px;
+        margin-top: -50px;
         margin-right: -12px;
         margin-left: -12px;
     }
     .col {
         padding-right: 12px;
         padding-left: 12px;
+        @media (max-width: $md){
+            margin-bottom: 90px;
+        }
     }
+    .swiper-slide {
+        height: initial;
+    }
+
+        .arrows {
+            position: relative;
+            background: #EAEEF2;
+            box-shadow: 18px 18px 30px 2px #D1D9E6, -18px -18px 30px 2px #f7f7f7;
+            border-radius: 10px;
+            height: 78px;
+            width: 100%;
+            max-width: 286px;
+            margin: 76px auto 0;
+            display: flex;
+            .arrow {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &.prev {
+                    transform: rotate(180deg);
+                }
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                height: 60px;
+                width: 1px;
+                background-color: #fff;
+                transform: translateY(-50%);
+            }
+            .swiper-button-next:after, .swiper-button-prev:after {
+                font-size: 0;
+            }
+            &.hide {
+                @media (min-width: 1024px){
+                    display: none;
+                }
+            }
+        }
     .item {
         height: 100%;
         position: relative;
@@ -232,6 +306,73 @@ a {
         p {
             line-height: 1.5;
             font-weight: 300;
+        }
+    }
+}
+.dual-background {
+    position: relative;
+    display: flex;
+    .left, .right {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+    }
+    .left {
+        left: 0;
+    }
+    .right {
+        right: 0;
+        //left: calc(50% + 1px);
+    }
+    .ring {
+        position: absolute;
+        z-index: 2;
+        &.ring1 {
+            left: 14%;
+            top: -37px;
+        }
+        &.ring2 {
+            right: 5%;
+            bottom: 67px;
+        }
+        &.ring3 {
+            left: 3%;
+            bottom: -50px;
+        }
+    }
+    .box {
+        position: relative;
+        width: 100%;
+        z-index: 3;
+        padding: 67px 0;
+    }
+    .content {
+        max-width: 770px;
+        background-color: #fff;
+        box-shadow: 0px 10px 20px #171A404C;
+        border-radius: 20px;
+        padding: 65px 30px 44px;
+        margin: 67px auto;
+        text-align: center;
+        position: relative;
+        .heading {
+            color: $theme-color;
+            font-size: 36px;
+            line-height: 1.33;
+            font-weight: 700;
+            margin-bottom: 35px;
+        }
+        .sub-heading {
+            font-size: 30px;
+            line-height: 1.6;
+            margin-bottom: 48px;
+        }
+        @media (max-width: $md){
+            max-width: 90%;
         }
     }
 }

@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Click Comumynity - nasze usługi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<!--     <link rel="preload" href="https://use.typekit.net/qgd3eha.css"> -->
+    <link rel="stylesheet" href="https://use.typekit.net/qgd3eha.css">
     <link rel="stylesheet" href="css/style.css">
 
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
@@ -27,8 +25,13 @@
             <div class="packets">
                 <img class="ring ring1" src="img/ring-small.svg" alt="ring">
                 <img class="ring ring2" src="img/ring.svg" alt="ring">
-                <div class="row">
-                    <div class="col col-12 col-md-4">
+
+
+                <div class="offer-slider" id="offer-slider">
+                    <div class="swiper-wrapper">
+                    
+
+                    <div class="slide swiper-slide">
                         <div class="item">
                             <div class="circle">1</div>
                             <div class="item-title">
@@ -50,11 +53,11 @@
                             <a href="#" class="button">Poznaj cenę</a>
                         </div>
                     </div>
-                    <div class="col col-12 col-md-4">
+                    <div class="slide swiper-slide">
                         <div class="item">
                             <div class="circle">2</div>
                             <div class="item-title">
-                        Pakiet <span class="fat break-line"></span> WEBINAR
+                        Pakiet <span class="fat break-line"> WEBINAR</span>
                             </div>
                             <ul>
                                
@@ -78,7 +81,7 @@
                             <a href="#" class="button">Poznaj cenę</a>
                         </div>
                     </div>
-                    <div class="col col-12 col-md-4">
+                    <div class="slide swiper-slide">
                         <div class="item">
                             <div class="circle">3</div>
                             <div class="item-title">
@@ -105,7 +108,19 @@
                             <a href="#" class="button">Poznaj cenę</a>
                         </div>
                     </div>
+                    </div>
+                
+            </div>
+                <div class="arrows offer-arrows">
+                    <div class="prev arrow swiper-button-prev">
+                        <img src="img/strzalka-nowa.svg" alt="">
+                    </div>
+                    <div class="next arrow swiper-button-next">
+                        <img src="img/strzalka-nowa.svg" alt="">
+                    </div>
                 </div>
+          
+
             </div>
         </div>
     </section>
@@ -180,6 +195,25 @@
         </div>
     </section>
 
+    <div class="ws100"></div>
+
+    <section class="dual-background">
+        <div class="left" style="background-image: url(img/face1.png)"></div>
+        <div class="right" style="background-image: url(img/face2.png)"></div>
+        <img class="ring ring1" src="img/ring-small2.svg" alt="ring">
+        <img class="ring ring2" src="img/ring.svg" alt="ring">
+        <div class="box">
+            <div class="content">
+                <div class="heading">Nie wiesz, który pakiet jest dla Ciebie odpowiedni?</div>
+                <div class="sub-heading"> Napisz do nas, skontaktujemy się z Tobą w ciągu 24h i chętnie doradzimy.</div>
+                <a href="#" class="button button-theme">napisz wiadomość</a>
+                <img class="ring ring3" src="img/ring-half.svg" alt="ring">
+            </div>
+        </div>
+    </section>
+
+
+    <div class="ws100"></div>
 
 
 
@@ -193,12 +227,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         //Smoth scroll
+
+        $( document ).ready(function() {
+
         $('a[href*="#"]').on('click', function (e) {
           e.preventDefault()
         
@@ -210,6 +244,35 @@
             'linear'
           )
         }); 
+        
+
+
+        var swiper2 = new Swiper('#offer-slider', {
+            slidesPerView: 1,
+            spaceBetween: 22,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                slidesPerView: 1,
+                },
+                768: {
+                slidesPerView: 2,
+                },
+                1024: {
+                slidesPerView: 3,
+                },
+            }
+        });
+
+        if($('#offer-slider .slide').length >= 3) {
+            $('.offer-arrows').addClass( "hide" );
+        } 
+
+
+        });
         </script>
 </body>
 </html>
